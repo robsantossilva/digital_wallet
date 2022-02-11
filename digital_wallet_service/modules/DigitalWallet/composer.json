@@ -1,0 +1,25 @@
+{
+    "name": "robsantossilva/digital_wallet",
+    "type": "project",
+    "require": {
+        "phpunit/phpunit": "^9.5",
+        "ramsey/uuid": "^4.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Robsantossilva\\DigitalWallet\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Robsantossilva\\Tests\\":"tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Robson Silva",
+            "email": "robsantossilva@gmail.com"
+        }
+    ]
+}
