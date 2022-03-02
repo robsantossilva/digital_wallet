@@ -2,19 +2,16 @@
 
 namespace Robsantossilva\Tests\Traits;
 
-use Robsantossilva\DigitalWallet\Domain\Entities\ValueObjectInterface;
+use Robsantossilva\DigitalWallet\Domain\Entities\ValueObjectAbstract;
 
 trait TestValueObject
 {
-    public function assertImplementsValueObjectInterface($valueObject)
+    public function assertImplementsValueObjectInterface($object)
     {
-        $reflection = new \ReflectionClass($valueObject);
+        // $reflection = new \ReflectionClass($object);
 
-        $this->assertTrue(
-            in_array(
-                ValueObjectInterface::class,
-                $reflection->getInterfaceNames()
-            )
-        );
+        // var_dump($reflection->getParentClass());
+
+        $this->assertInstanceOf(ValueObjectAbstract::class, $object);
     }
 }

@@ -3,7 +3,8 @@
     "type": "project",
     "require": {
         "phpunit/phpunit": "^9.5",
-        "ramsey/uuid": "^4.2"
+        "ramsey/uuid": "^4.2",
+        "phpunit/php-code-coverage": "^9.2"
     },
     "license": "MIT",
     "autoload": {

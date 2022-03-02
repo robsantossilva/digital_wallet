@@ -1,10 +1,10 @@
 <?php
 
-namespace Robsantossilva\DigitalWallet\Domain\Entities\DigitalWallet\ValueObjects;
+namespace Robsantossilva\DigitalWallet\Domain\Entities\Wallet\ValueObjects;
 
-use Robsantossilva\DigitalWallet\Domain\Entities\ValueObjectInterface;
+use Robsantossilva\DigitalWallet\Domain\Entities\ValueObjectAbstract;
 
-class DocumentNumber implements ValueObjectInterface
+class DocumentNumber extends ValueObjectAbstract
 {
     protected $value;
 
@@ -13,7 +13,7 @@ class DocumentNumber implements ValueObjectInterface
         $this->value = preg_replace('/[^0-9]/', '', $value);
     }
 
-    public function IsValid()
+    public function isValid()
     {
         if ($this->validCPF()) {
             return true;
@@ -23,15 +23,17 @@ class DocumentNumber implements ValueObjectInterface
             return true;
         }
 
+        $this->setErrorMessage('Invalid CPF or CNPJ');
+
         return false;
     }
 
-    public function GetValue()
+    public function getValue()
     {
         return $this->value;
     }
 
-    private function validCPF()
+    protected function validCPF()
     {
         if (strlen($this->value) !== 11 || preg_match('/(\d)\1{10}/', $this->value)) {
             return false;
@@ -52,7 +54,7 @@ class DocumentNumber implements ValueObjectInterface
         return true;
     }
 
-    private function validCNPJ()
+    protected function validCNPJ()
     {
         $cnpj = $this->value;
 
